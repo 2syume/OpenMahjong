@@ -13,16 +13,16 @@ namespace OpenMahjong.Logic.Common.Template
         }
         public TileTemplate(int number, int kind, params KeyValuePair<string ,string>[] properties)
         {
-            initTileTemplate(number, kind, properties.ToList());
+            initTileTemplate(number, kind, properties);
         }
 
-        private void initTileTemplate(int number, int kind, List<KeyValuePair<string, string>> properties)
+        private void initTileTemplate(int number, int kind, KeyValuePair<string, string>[] properties)
         {
             this.Number = number;
             this.Kind = kind;
 
             this.Properties = new Dictionary<string, string>();
-            properties.ForEach(x => this.Properties.Add(x.Key, x.Value));
+            properties?.ToList().ForEach(x => this.Properties.Add(x.Key, x.Value));
         }
 
         public int Number { get; private set; }
